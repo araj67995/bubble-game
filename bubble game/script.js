@@ -1,4 +1,3 @@
-let digit  = "";
 let timer = 60;
 let score = 0;
 var hitdigit = 0;
@@ -15,9 +14,13 @@ function runTimer(){
         }
     },1000);
 };
-for(let i=1; i<=176; i++){
-    let rn = Math.floor(Math.random()*10);
-    digit +=`<div class="digit">${rn}</div>`;
+function makebubble(){
+    let digit  = "";
+    for(let i=1; i<=176; i++){
+        let rn = Math.floor(Math.random()*10);
+        digit +=`<div class="digit">${rn}</div>`;
+    }
+    document.querySelector(".game").innerHTML = digit;
 }
 function hit(){
     hitdigit = Math.floor(Math.random()*10);
@@ -27,10 +30,9 @@ function increaseScore (){
     score += 10;
     document.querySelector("#score").textContent = score;
 }
-
 runTimer();
-document.querySelector(".game").innerHTML = digit;
 hit();
+makebubble();
 
 
 document.querySelector(".game")
@@ -39,6 +41,7 @@ document.querySelector(".game")
      if(clickedNum === hitdigit){
        increaseScore();
        hit();
+       makebubble();
      }
 });
 
